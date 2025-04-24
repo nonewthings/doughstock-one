@@ -47,20 +47,20 @@ const Auth = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4 animate-gradient-x relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[length:24px_24px]"></div>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#0ea5e9] to-[#6366f1] p-4 animate-gradient-x relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
       
       <div className="w-full max-w-md relative">
-        <div className="absolute inset-0 bg-white/5 blur-3xl rounded-3xl transform -rotate-3"></div>
+        <div className="absolute inset-0 bg-white/5 blur-3xl rounded-3xl transform -rotate-6"></div>
         
-        <Card className="border-none shadow-sm overflow-hidden bg-white/80 backdrop-blur-xl">
-          <div className="h-1 w-full bg-gradient-to-r from-slate-200 to-slate-300"></div>
+        <Card className="border-none shadow-2xl overflow-hidden bg-white/10 backdrop-blur-xl">
+          <div className="bg-gradient-to-r from-[#0ea5e9] to-[#6366f1] h-2 w-full"></div>
           
           <CardHeader className="space-y-1 text-center pt-8">
-            <CardTitle className="text-2xl font-light tracking-tight text-slate-900">
+            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
               Doughstock Optimizer
             </CardTitle>
-            <CardDescription className="text-slate-500 text-sm">
+            <CardDescription className="text-white/80">
               Sistem Manajemen Stok Bahan Baku Roti
             </CardDescription>
           </CardHeader>
