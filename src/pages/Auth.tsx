@@ -2,12 +2,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
-import { Loader2, User, Lock } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -47,84 +43,74 @@ const Auth = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#0ea5e9] to-[#6366f1] p-4 animate-gradient-x relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-      
-      <div className="w-full max-w-md relative">
-        <div className="absolute inset-0 bg-white/5 blur-3xl rounded-3xl transform -rotate-6"></div>
-        
-        <Card className="border-none shadow-2xl overflow-hidden bg-white/10 backdrop-blur-xl">
-          <div className="bg-gradient-to-r from-[#0ea5e9] to-[#6366f1] h-2 w-full"></div>
-          
-          <CardHeader className="space-y-1 text-center pt-8">
-            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
-              Doughstock Optimizer
-            </CardTitle>
-            <CardDescription className="text-white/80">
-              Sistem Manajemen Stok Bahan Baku Roti
-            </CardDescription>
-          </CardHeader>
-          
-          <form onSubmit={handleSignIn}>
-            <CardContent className="space-y-5 pt-4">
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm font-medium text-white">Email Admin</Label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-white/60">
-                    <User size={18} />
-                  </div>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="admin@example.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus-visible:ring-white/30"
-                    required
-                  />
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="password" className="text-sm font-medium text-white">Password</Label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-white/60">
-                    <Lock size={18} />
-                  </div>
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 bg-white/10 border-white/20 text-white placeholder:text-white/60 focus-visible:ring-white/30"
-                    required
-                  />
-                </div>
-              </div>
-            </CardContent>
+    <div className="flex items-center justify-center min-h-screen bg-[hsl(220,20%,97%)]">
+      <div className="w-full max-w-sm mx-4">
+        {/* Logo / Brand */}
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[hsl(220,13%,18%)] mb-5">
+            <span className="text-white text-lg font-semibold">D</span>
+          </div>
+          <h1 className="text-xl font-semibold tracking-tight text-[hsl(220,13%,18%)]">
+            Doughstock Optimizer
+          </h1>
+          <p className="text-sm text-[hsl(220,10%,54%)] mt-1">
+            Sistem Manajemen Stok Bahan Baku
+          </p>
+        </div>
+
+        {/* Card */}
+        <div className="bg-white rounded-2xl shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_24px_rgba(0,0,0,0.06)] p-8">
+          <form onSubmit={handleSignIn} className="space-y-5">
+            <div className="space-y-1.5">
+              <label htmlFor="email" className="block text-[13px] font-medium text-[hsl(220,13%,30%)]">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="admin@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full h-11 px-3.5 rounded-lg border border-[hsl(220,15%,90%)] bg-white text-sm text-[hsl(220,13%,18%)] placeholder:text-[hsl(220,10%,72%)] outline-none transition-all focus:border-[hsl(220,13%,40%)] focus:ring-2 focus:ring-[hsl(220,13%,40%,0.08)]"
+                required
+              />
+            </div>
             
-            <CardFooter className="flex flex-col gap-4 pb-8">
-              <Button 
-                className="w-full h-11 text-base font-medium bg-white hover:bg-white/90 text-[#0ea5e9] shadow-lg hover:shadow-xl transition-all duration-300"
-                type="submit" 
-                disabled={loading}
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Memproses...
-                  </>
-                ) : (
-                  "Masuk ke Sistem"
-                )}
-              </Button>
-              <p className="text-xs text-center text-white/60 mt-2">
-                Sistem ini hanya dapat diakses oleh admin yang berwenang
-              </p>
-            </CardFooter>
+            <div className="space-y-1.5">
+              <label htmlFor="password" className="block text-[13px] font-medium text-[hsl(220,13%,30%)]">
+                Password
+              </label>
+              <input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full h-11 px-3.5 rounded-lg border border-[hsl(220,15%,90%)] bg-white text-sm text-[hsl(220,13%,18%)] placeholder:text-[hsl(220,10%,72%)] outline-none transition-all focus:border-[hsl(220,13%,40%)] focus:ring-2 focus:ring-[hsl(220,13%,40%,0.08)]"
+                required
+              />
+            </div>
+
+            <button 
+              className="w-full h-11 rounded-lg bg-[hsl(220,13%,18%)] text-white text-sm font-medium transition-colors hover:bg-[hsl(220,13%,26%)] disabled:opacity-50 disabled:cursor-not-allowed mt-1"
+              type="submit" 
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="inline-flex items-center gap-2">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Memproses...
+                </span>
+              ) : (
+                "Masuk"
+              )}
+            </button>
           </form>
-        </Card>
+        </div>
+
+        <p className="text-xs text-center text-[hsl(220,10%,64%)] mt-6">
+          Hanya untuk admin yang berwenang
+        </p>
       </div>
     </div>
   );
